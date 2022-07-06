@@ -1,4 +1,9 @@
-console.log("we will fly");
-
+console.log(flyghts);
 const tRows = document.getElementById("table");
-tRows.innerHTML = "<tr><td>A</td><td>1</td></tr><tr><td>B</td><td>2</td></tr>";
+
+let oneGate = flyghts[0].gate;
+let all = flyghts.map((e) => `<tr><td>${e.gate}</td></tr>`).join("");
+
+console.log(all);
+
+tRows.innerHTML = `${all}`;
