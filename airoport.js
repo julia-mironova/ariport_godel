@@ -1,7 +1,10 @@
 const departures = "departures";
 const arrivals = "arrivals";
-
-console.log(flights[0].schedArr.slice(11, flights[0].schedArr.length));
+let arrToDisplay = [...flights];
+const headersDeparture =
+	"<tr><th class='canSorted' id='airline'>Airline</th><th class='canSorted' id='flight'>Flight N</th><th class='canSorted' id='destination'>Destination</th><th class='canSorted' id='departure'>Time departure</th><th>Time arrival (with time zone)</th><th>Gate</th><th class='canSorted' id='status'>Status</th></tr>";
+const headersArrival =
+	"<tr><th class='canSorted' id='airline'>Airline</th><th class='canSorted' id='flight'>Flight N</th><th class='canSorted' id='destination'>Destination</th><th>Time arrival</th><th class='canSorted' id='status'>Status</th></tr>";
 
 const tRows = document.getElementById("table");
 const tHead = document.getElementById("table-head");
@@ -23,9 +26,8 @@ function changeBackground() {
 //table for arrivals or departures
 function buildTable() {
 	if (optionOfTable.value === departures) {
-		tHead.innerHTML =
-			"<tr><th class='canSorted'>Airline</th><th class='canSorted'>Flight N</th><th class='canSorted'>Destination</th><th class='canSorted'>Time departure</th><th>Time arrival (with time zone)</th><th>Gate</th><th class='canSorted'>Status</th></tr>";
-		let all = flights
+		tHead.innerHTML = headersDeparture;
+		let all = arrToDisplay
 			.filter((e) => e.gate != undefined)
 			.map(
 				(e) => `<tr>
@@ -43,9 +45,8 @@ function buildTable() {
 			.join("");
 		tRows.innerHTML = `${all}`;
 	} else {
-		tHead.innerHTML =
-			"<tr><th class='canSorted'>Airline</th><th class='canSorted'>Flight N</th><th class='canSorted'>Destination</th><th>Time arrival</th><th class='canSorted'>Status</th></tr>";
-		let all = flights
+		tHead.innerHTML = headersArrival;
+		let all = arrToDisplay
 			.filter((e) => e.gate == undefined)
 			.map(
 				(e) => `<tr>
