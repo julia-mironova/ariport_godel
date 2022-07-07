@@ -1,4 +1,4 @@
-const flyghts = [
+const flights = [
 	{
 		ac: "A332",
 		lu: "2022-07-06T15:16:00+0200",
