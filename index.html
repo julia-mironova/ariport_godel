@@ -8,15 +8,17 @@
 	</head>
 	<body>
 		<main>
-			<h1>
-				The table of:
-				<span>
-					<select name="select" id="option">
-						<option value="departures" selected>departures</option>
-						<option value="arrivals">arrivals</option>
-					</select>
-				</span>
-			</h1>
+			<header>
+				<h1>
+					The table of:
+					<span>
+						<select name="select" id="option">
+							<option value="departures" selected>departures</option>
+							<option value="arrivals">arrivals</option>
+						</select>
+					</span>
+				</h1>
+			</header>
 			<section>
 				<table>
 					<thead class="depetchers">
@@ -25,7 +27,7 @@
 							<th class="canSorted">Flight N</th>
 							<th>Destination</th>
 							<th>Time expected</th>
-							<th class="canSorted">Time scedual</th>
+							<th class="canSorted">Time schedule</th>
 							<th>Gate</th>
 							<th class="canSorted">Status</th>
 						</tr>
@@ -33,6 +35,18 @@
 					<tbody id="table"></tbody>
 				</table>
 			</section>
+			<footer>
+				<h2>Thank you, Ilia, for this lesson!</h2>
+				<div class="two-columns">
+					<a
+						href="https://docs.google.com/document/d/1c818VqYLw8Sahw0Eg3IzLqomDCVSsmXrnbYGiS5uKg8/edit?usp=sharing"
+						>link to my CV
+					</a>
+					<a href="https://github.com/julia-mironova/ariport_godel"
+						>link to Github with this code</a
+					>
+				</div>
+			</footer>
 			<script src="./data.js"></script>
 			<script src="./airoport.js"></script>
 		</main>
