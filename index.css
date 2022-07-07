@@ -3,6 +3,7 @@
 	--color-dark: #000;
 	--color-grey: #eee;
 	--color-link: #0000ff;
+	--color-hover: #008000;
 }
 
 body {
@@ -69,15 +70,17 @@ thead {
 
 thead > tr > th {
 	border: 1px solid var(--color-light);
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .canSorted {
-	width: 15%;
+	min-width: 15%;
 }
 
 .canSorted:hover {
 	cursor: pointer;
-	letter-spacing: 0.15rem;
+	color: var(--color-hover);
 	transition: all 0.3s;
 }
 
