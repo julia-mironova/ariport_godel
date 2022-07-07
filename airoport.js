@@ -1,6 +1,9 @@
+const departures = "departures";
+const arrivals = "arrivals";
+
 const tRows = document.getElementById("table");
 
-let oneGate = flights[0].gate;
+//table for departures
 let all = flights
 	.filter((e) => e.gate != undefined)
 	.map(
@@ -17,3 +20,25 @@ let all = flights
 	.join("");
 
 tRows.innerHTML = `${all}`;
+
+//change background-image in table head
+const headBI = document.getElementById("head");
+
+let optionOfTable = document.getElementById("option");
+
+function changeBackground() {
+	optionOfTable = document.getElementById("option");
+	if (optionOfTable.value === departures) {
+		headBI.style.backgroundImage = "url('./img/departure.svg')";
+	} else {
+		headBI.style.backgroundImage = "url('./img/arrival.svg')";
+	}
+}
+
+optionOfTable.addEventListener("click", function () {
+	changeBackground();
+});
+
+changeBackground();
+
+//table for arrivals

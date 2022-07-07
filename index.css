@@ -11,6 +11,10 @@ body {
 	margin: 2%;
 }
 
+header {
+	background-repeat: no-repeat;
+}
+
 main {
 	display: flex;
 	flex: 1;
@@ -92,7 +96,7 @@ td {
 }
 
 footer {
-	padding-bottom: 0;
+	padding-bottom: 10px;
 }
 
 .two-columns {
