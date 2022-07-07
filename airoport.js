@@ -61,7 +61,7 @@ function buildTable() {
 	}
 }
 
-//change the time to correct
+//sort the table
 
 changeBackground();
 buildTable();
