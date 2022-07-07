@@ -13,6 +13,8 @@ body {
 
 header {
 	background-repeat: no-repeat;
+	margin: 0 auto;
+	width: 55%;
 }
 
 main {
@@ -49,6 +51,7 @@ select {
 
 section {
 	margin: 0 auto;
+	height: 70vh;
 }
 
 table {
@@ -110,4 +113,37 @@ a {
 	font-size: 1.2rem;
 	text-decoration: none;
 	color: var(--color-link);
+}
+
+@media screen and (max-width: 1060px) {
+	section {
+		overflow: scroll;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	body {
+		font-size: 7px;
+	}
+
+	header {
+		background-repeat: no-repeat;
+		background-size: 10%;
+		margin: 0 auto;
+		width: 80%;
+	}
+
+	select {
+		font-size: 1.1rem;
+	}
+
+	footer {
+		padding-bottom: 5px;
+	}
+}
+
+@media screen and (max-width: 420px) {
+	body {
+		font-size: 4px;
+	}
 }
