@@ -80,15 +80,24 @@ function chooseFieldForSort(e) {
 	}
 }
 
-let calckClik = 1;
+let calckClik1 = 1;
+let calckClik2 = 1;
 tHead.onclick = (e) => {
 	let typeOfSort = "default";
 	e.target.id.length == 0 ? "don't need sort" : (typeOfSort = e.target.id);
-	calckClik % 2
-		? arrToDisplay.sort(sortAlphabetDown("alname"))
-		: arrToDisplay.sort(sortAlphabetUp("alname"));
+	if (typeOfSort == "airline") {
+		calckClik1 % 2
+			? arrToDisplay.sort(sortAlphabetDown("alname"))
+			: arrToDisplay.sort(sortAlphabetUp("alname"));
+		calckClik1++;
+	}
+	if (typeOfSort == "flight") {
+		calckClik2 % 2
+			? arrToDisplay.sort(sortAlphabetDown("fnr"))
+			: arrToDisplay.sort(sortAlphabetUp("fnr"));
+		calckClik2++;
+	}
 	buildTable();
-	calckClik++;
 };
 
 //TODO: need calck unified and make it for all fields
