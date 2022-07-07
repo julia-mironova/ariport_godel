@@ -2,7 +2,7 @@ const departures = "departures";
 const arrivals = "arrivals";
 let arrToDisplay = [...flights];
 const headersDeparture =
-	"<tr><th class='canSorted' id='airline'>Airline</th><th class='canSorted' id='flight'>Flight N</th><th class='canSorted' id='destination'>Destination</th><th class='canSorted' id='departure'>Time departure</th><th>Time arrival (with time zone)</th><th>Gate</th><th class='canSorted' id='status'>Status</th></tr>";
+	"<tr><th class='canSorted' id='airline'>Airline</th><th class='canSorted' id='flight' width='15%'>Flight N</th><th class='canSorted' id='destination'>Destination</th><th class='canSorted' id='departure'>Time departure</th><th>Time arrival (with time zone)</th><th>Gate</th><th class='canSorted' id='status'>Status</th></tr>";
 const headersArrival =
 	"<tr><th class='canSorted' id='airline'>Airline</th><th class='canSorted' id='flight'>Flight N</th><th class='canSorted' id='destination'>Destination</th><th>Time arrival</th><th class='canSorted' id='status'>Status</th></tr>";
 
@@ -36,7 +36,7 @@ function buildTable() {
   <td>${e.apname}</td>
   <td>${e.sched.slice(11, 19)}</td>
   <td>${
-		e.schedArr === undefined ? "-" : e.schedArr.slice(11, e.schedArr.length)
+		e.schedArr === undefined ? "--" : e.schedArr.slice(11, e.schedArr.length)
 	}</td>
   <td>${e.gate}</td>
   <td>${e.status}</td>
@@ -63,6 +63,10 @@ function buildTable() {
 }
 
 //sort the table
+
+tHead.onclick = (e) => {
+	e.target.id.length == 0 ? "don't need sort" : console.log(e.target.id);
+};
 
 changeBackground();
 buildTable();
