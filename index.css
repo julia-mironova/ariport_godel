@@ -67,6 +67,8 @@ table {
 thead {
 	background-color: var(--color-dark);
 	color: var(--color-light);
+	position: sticky;
+	top: 0;
 }
 
 thead > tr > th {
@@ -125,11 +127,11 @@ a:hover {
 	transition: all 0.3s ease-in;
 }
 
-@media screen and (max-width: 1060px) {
+@media screen and (max-width: 1440px) {
 	header {
 		background-repeat: no-repeat;
 		margin: 0 auto;
-		width: 50%;
+		width: 55%;
 	}
 }
 
@@ -142,7 +144,7 @@ a:hover {
 		background-repeat: no-repeat;
 		background-size: 10%;
 		margin: 0 auto;
-		width: 70%;
+		width: 75%;
 	}
 
 	select {

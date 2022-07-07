@@ -83,12 +83,11 @@ tHead.onclick = (e) => {
 	} else {
 		console.log("write sort to time function correct");
 	}
-
 	buildTable();
 	calckClik++;
 };
 
-//TODO: need calck unified and make it for all fields
+//TODO: need by key === sched make correct sort
 
 changeBackground();
 buildTable();
