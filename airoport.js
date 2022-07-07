@@ -65,7 +65,9 @@ function buildTable() {
 //sort the table
 
 tHead.onclick = (e) => {
-	e.target.id.length == 0 ? "don't need sort" : console.log(e.target.id);
+	let typeOfSort = "default";
+	e.target.id.length == 0 ? "don't need sort" : (typeOfSort = e.target.id);
+	console.log(typeOfSort);
 };
 
 changeBackground();
