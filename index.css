@@ -15,7 +15,7 @@ body {
 header {
 	background-repeat: no-repeat;
 	margin: 0 auto;
-	width: 55%;
+	width: 40%;
 }
 
 main {
@@ -53,6 +53,7 @@ select {
 section {
 	margin: 0 auto;
 	height: 70vh;
+	overflow: scroll;
 }
 
 table {
@@ -125,8 +126,10 @@ a:hover {
 }
 
 @media screen and (max-width: 1060px) {
-	section {
-		overflow: scroll;
+	header {
+		background-repeat: no-repeat;
+		margin: 0 auto;
+		width: 50%;
 	}
 }
 
@@ -139,7 +142,7 @@ a:hover {
 		background-repeat: no-repeat;
 		background-size: 10%;
 		margin: 0 auto;
-		width: 80%;
+		width: 70%;
 	}
 
 	select {

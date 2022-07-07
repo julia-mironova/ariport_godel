@@ -2,9 +2,9 @@ const departures = "departures";
 const arrivals = "arrivals";
 let arrToDisplay = [...flights];
 const headersDeparture =
-	"<tr><th class='canSorted' id='airline'>Airline</th><th class='canSorted' id='flight' width='15%'>Flight N</th><th class='canSorted' id='destination'>Destination</th><th class='canSorted' id='departure'>Time departure</th><th>Time arrival (with time zone)</th><th>Gate</th><th class='canSorted' id='status'>Status</th></tr>";
+	"<tr><th class='canSorted' id='alname'>Airline</th><th class='canSorted' id='fnr' width='15%'>Flight N</th><th class='canSorted' id='apname'>Destination</th><th class='canSorted' id='sched'>Time departure</th><th>Time arrival (with time zone)</th><th>Gate</th><th class='canSorted' id='status'>Status</th></tr>";
 const headersArrival =
-	"<tr><th class='canSorted' id='airline'>Airline</th><th class='canSorted' id='flight'>Flight N</th><th class='canSorted' id='destination'>Destination</th><th>Time arrival</th><th class='canSorted' id='status'>Status</th></tr>";
+	"<tr><th class='canSorted' id='alname'>Airline</th><th class='canSorted' id='fnr'>Flight N</th><th class='apname' id='destination'>Destination</th><th>Time arrival</th><th class='canSorted' id='status'>Status</th></tr>";
 
 const tRows = document.getElementById("table");
 const tHead = document.getElementById("table-head");
@@ -71,30 +71,19 @@ function sortAlphabetUp(field) {
 	return (a, b) => (a[field] <= b[field] ? 1 : -1);
 }
 
-function chooseFieldForSort(e) {
-	let sortField;
-	switch (e) {
-		case "airline":
-			sortField = "alname";
-			break;
-	}
-}
-
 let calckClik = 1;
 
 tHead.onclick = (e) => {
 	let typeOfSort = "default";
 	e.target.id.length == 0 ? "don't need sort" : (typeOfSort = e.target.id);
-	if (typeOfSort == "airline") {
+	if (typeOfSort !== "sched") {
 		calckClik % 2
-			? arrToDisplay.sort(sortAlphabetDown("alname"))
-			: arrToDisplay.sort(sortAlphabetUp("alname"));
+			? arrToDisplay.sort(sortAlphabetDown(typeOfSort))
+			: arrToDisplay.sort(sortAlphabetUp(typeOfSort));
+	} else {
+		console.log("write sort to time function correct");
 	}
-	if (typeOfSort == "flight") {
-		calckClik % 2
-			? arrToDisplay.sort(sortAlphabetDown("fnr"))
-			: arrToDisplay.sort(sortAlphabetUp("fnr"));
-	}
+
 	buildTable();
 	calckClik++;
 };
