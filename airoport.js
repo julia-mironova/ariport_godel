@@ -71,10 +71,6 @@ function sortAlphabetUp(field) {
 	return (a, b) => (a[field] <= b[field] ? 1 : -1);
 }
 
-/*function sort(columnId) {
-	console.log(`return arrSorted arrToDisplay ${columnId}`);
-}*/
-
 function chooseFieldForSort(e) {
 	let sortField;
 	switch (e) {
@@ -88,13 +84,14 @@ let calckClik = 1;
 tHead.onclick = (e) => {
 	let typeOfSort = "default";
 	e.target.id.length == 0 ? "don't need sort" : (typeOfSort = e.target.id);
-	console.log(typeOfSort);
 	calckClik % 2
 		? arrToDisplay.sort(sortAlphabetDown("alname"))
 		: arrToDisplay.sort(sortAlphabetUp("alname"));
 	buildTable();
 	calckClik++;
 };
+
+//TODO: need calck unified and make it for all fields
 
 changeBackground();
 buildTable();
