@@ -2,24 +2,7 @@ const departures = "departures";
 const arrivals = "arrivals";
 
 const tRows = document.getElementById("table");
-
-//table for departures
-let all = flights
-	.filter((e) => e.gate != undefined)
-	.map(
-		(e) => `<tr>
-  <td>${e.alname}</td>
-  <td>${e.fnr}</td>
-  <td>${e.apname}</td>
-  <td>${e.schedArr}</td>
-  <td>${e.schedArr}</td>
-  <td>${e.gate}</td>
-  <td>${e.status}</td>
-  </tr>`
-	)
-	.join("");
-
-tRows.innerHTML = `${all}`;
+const tHead = document.getElementById("table-head");
 
 //change background-image in table head
 const headBI = document.getElementById("head");
@@ -35,10 +18,48 @@ function changeBackground() {
 	}
 }
 
-optionOfTable.addEventListener("click", function () {
-	changeBackground();
-});
+//table for arrivals or departures
+function buildTable() {
+	if (optionOfTable.value === departures) {
+		tHead.innerHTML =
+			"<tr><th class='canSorted'>Airline</th><th class='canSorted'>Flight N</th><th>Destination</th><th>Time expected</th><th class='canSorted'>Time schedule</th><th>Gate</th><th class='canSorted'>Status</th></tr>";
+		let all = flights
+			.filter((e) => e.gate != undefined)
+			.map(
+				(e) => `<tr>
+  <td>${e.alname}</td>
+  <td>${e.fnr}</td>
+  <td>${e.apname}</td>
+  <td>${e.schedArr}</td>
+  <td>${e.schedArr}</td>
+  <td>${e.gate}</td>
+  <td>${e.status}</td>
+  </tr>`
+			)
+			.join("");
+		tRows.innerHTML = `${all}`;
+	} else {
+		tHead.innerHTML =
+			"<tr><th class='canSorted'>Airline</th><th class='canSorted'>Flight N</th><th>Destination</th><th class='canSorted'>Status</th></tr>";
+		let all = flights
+			.filter((e) => e.gate == undefined)
+			.map(
+				(e) => `<tr>
+  <td>${e.alname}</td>
+  <td>${e.fnr}</td>
+  <td>${e.apname}</td>
+  <td>${e.status}</td>
+  </tr>`
+			)
+			.join("");
+		tRows.innerHTML = `${all}`;
+	}
+}
 
 changeBackground();
+buildTable();
 
-//table for arrivals
+optionOfTable.addEventListener("click", function () {
+	changeBackground();
+	buildTable();
+});
