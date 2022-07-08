@@ -4,7 +4,7 @@ let arrToDisplay = [...flights];
 const headersDeparture =
 	"<tr><th class='canSorted' id='alname'>Airline</th><th class='canSorted' id='fnr' width='15%'>Flight N</th><th class='canSorted' id='apname'>Destination</th><th class='canSorted' id='sched'>Time departure</th><th>Time arrival (with time zone)</th><th>Gate</th><th class='canSorted' id='status'>Status</th></tr>";
 const headersArrival =
-	"<tr><th class='canSorted' id='alname'>Airline</th><th class='canSorted' id='fnr'>Flight N</th><th class='apname' id='destination'>Destination</th><th>Time arrival</th><th class='canSorted' id='status'>Status</th></tr>";
+	"<tr><th class='canSorted' id='alname'>Airline</th><th class='canSorted' id='fnr'>Flight N</th><th class='canSorted' id='apname'>Destination</th><th class='canSorted' id='sched'>Time arrival</th><th class='canSorted' id='status'>Status</th></tr>";
 
 const tRows = document.getElementById("table");
 const tHead = document.getElementById("table-head");
@@ -62,7 +62,7 @@ function buildTable() {
 	}
 }
 
-//sort the table
+//sort the table by alphabet
 function sortAlphabetDown(field) {
 	return (a, b) => (a[field] >= b[field] ? 1 : -1);
 }
@@ -71,20 +71,33 @@ function sortAlphabetUp(field) {
 	return (a, b) => (a[field] <= b[field] ? 1 : -1);
 }
 
+//sort the table by date comparing
+function sortDateDown(field) {
+	return (a, b) => (new Date(a[field]) >= new Date(b[field]) ? 1 : -1);
+}
+
+function sortDateUp(field) {
+	return (a, b) => (new Date(a[field]) <= new Date(b[field]) ? 1 : -1);
+}
+
 let calckClik = 1;
 
 tHead.onclick = (e) => {
-	let typeOfSort = "default";
+	let typeOfSort = "";
 	e.target.id.length == 0 ? "don't need sort" : (typeOfSort = e.target.id);
-	if (typeOfSort !== "sched") {
-		calckClik % 2
-			? arrToDisplay.sort(sortAlphabetDown(typeOfSort))
-			: arrToDisplay.sort(sortAlphabetUp(typeOfSort));
-	} else {
-		console.log("write sort to time function correct");
+	if (typeOfSort.length > 1) {
+		if (typeOfSort !== "sched") {
+			calckClik % 2
+				? arrToDisplay.sort(sortAlphabetDown(typeOfSort))
+				: arrToDisplay.sort(sortAlphabetUp(typeOfSort));
+		} else {
+			calckClik % 2
+				? arrToDisplay.sort(sortDateDown(typeOfSort))
+				: arrToDisplay.sort(sortDateUp(typeOfSort));
+		}
+		buildTable();
+		calckClik++;
 	}
-	buildTable();
-	calckClik++;
 };
 
 //TODO: need by key === sched make correct sort
