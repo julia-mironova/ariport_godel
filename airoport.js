@@ -8,6 +8,7 @@ const headersArrival =
 
 const tRows = document.getElementById("table");
 const tHead = document.getElementById("table-head");
+const refreshBtn = document.getElementById("startDisplay");
 
 //change background-image in table head
 const headBI = document.getElementById("head");
@@ -107,5 +108,11 @@ buildTable();
 
 optionOfTable.addEventListener("click", function () {
 	changeBackground();
+	buildTable();
+});
+
+//just to put to first table screen without refresh the page
+refreshBtn.addEventListener("click", function () {
+	arrToDisplay = [...flights];
 	buildTable();
 });

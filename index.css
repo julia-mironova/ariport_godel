@@ -18,6 +18,18 @@ header {
 	width: 40%;
 }
 
+.refresh-btn {
+	cursor: pointer;
+	background-color: var(--color-grey);
+	height: 30px;
+	border-radius: 15%;
+	margin-bottom: 15px;
+}
+
+.refresh-btn:hover {
+	border-color: var(--color-hover);
+}
+
 main {
 	display: flex;
 	flex: 1;
@@ -81,10 +93,11 @@ thead > tr > th {
 	min-width: 15%;
 }
 
+.refresh-btn:hover,
 .canSorted:hover {
 	cursor: pointer;
 	color: var(--color-hover);
-	transition: all 0.3s;
+	transition: all 0.3s ease-in;
 }
 
 th {
